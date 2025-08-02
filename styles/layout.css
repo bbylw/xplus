@@ -1,0 +1,246 @@
+/**
+ * 布局和响应式样式
+ */
+
+/* 主要区域布局 */
+.sidebar {
+  background: var(--panel);
+  border-radius: var(--card-radius);
+  padding: 20px;
+  box-shadow: var(--shadow-md);
+  position: sticky;
+  top: 24px;
+  border: 1px solid var(--border);
+  max-height: calc(100vh - 48px);
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+
+.preview-area {
+  display: grid;
+  gap: 16px;
+  align-items: start;
+}
+
+.preview-card {
+  width: min(100%, calc(var(--preview-width) + 32px));
+  margin: 0 auto;
+  background: var(--panel);
+  border-radius: var(--card-radius);
+  padding: 16px;
+  box-shadow: var(--shadow-lg);
+  overflow: auto;
+  border: 1px solid var(--border);
+  position: relative;
+  max-height: calc(100vh - 150px);
+  transform: translateZ(0);
+  will-change: transform;
+  contain: layout style paint;
+}
+
+/* 捕获区域 */
+#capture-area {
+  width: var(--preview-width);
+  margin: 0 auto;
+  color: var(--text);
+  border-radius: 12px;
+  overflow: visible;
+  border: 1px solid var(--border);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  flex-direction: column;
+  transform: translateZ(0);
+  contain: layout style;
+}
+
+.content-wrap {
+  padding: var(--preview-padding);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow: visible;
+  flex-grow: 1;
+}
+
+.content-text {
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-size: 20px;
+  line-height: 1.7;
+  max-width: 72ch;
+  margin: 0 auto;
+  transition: var(--transition);
+  min-height: 100px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.content-text::selection {
+  background: rgba(88,166,255,.35);
+}
+
+/* 品牌页脚 */
+.brand-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-top: 1px solid var(--border);
+  background: var(--subtle);
+}
+
+.brand-left {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 40px;
+}
+
+.brand-logo {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  object-fit: cover;
+  background: #e5e7eb;
+  display: none;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  aspect-ratio: 1;
+  object-fit: contain;
+}
+
+.brand-name {
+  font-weight: 700;
+  font-size: 14px;
+  color: #111827;
+}
+
+.brand-right .brand-mark {
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: .02em;
+}
+
+/* 响应式设计 */
+@media (max-width: 1080px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+  .sidebar {
+    position: static;
+    max-height: none;
+  }
+  .preview-card, .export-controls {
+    width: 100%;
+  }
+  #capture-area {
+    width: 100%;
+  }
+  .preview-toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 16px;
+    min-height: 100vh;
+  }
+  
+  .sidebar {
+    order: 2;
+    position: sticky;
+    top: 0;
+    background: var(--panel);
+    border-radius: var(--card-radius);
+    padding: 16px;
+    box-shadow: var(--shadow-md);
+    z-index: 100;
+  }
+  
+  .preview-area {
+    order: 1;
+  }
+  
+  .preview-card {
+    margin: 0 auto;
+    max-width: 100%;
+    overflow-x: auto;
+  }
+  
+  #capture-area {
+    min-width: 320px;
+    transform-origin: top left;
+    min-height: 200px;
+    overflow: visible;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 8px;
+    gap: 12px;
+  }
+  
+  .sidebar {
+    padding: 12px;
+  }
+  
+  .panel-group {
+    margin-bottom: 16px;
+  }
+  
+  .field {
+    margin-bottom: 12px;
+  }
+  
+  .export-controls {
+    padding: 12px;
+  }
+}
+
+/* 触摸设备优化 */
+@media (hover: none) and (pointer: coarse) {
+  .icon-btn,
+  .preset-btn,
+  .secondary-btn,
+  .primary-btn {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  .range-field input[type="range"] {
+    height: 44px;
+  }
+  
+  .field input,
+  .field select,
+  .field textarea {
+    min-height: 44px;
+    font-size: 16px;
+  }
+}
+
+/* 全屏模式 */
+.preview-card:fullscreen {
+  background: var(--bg);
+  padding: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.preview-card:fullscreen #capture-area {
+  max-width: 90vw;
+  max-height: 90vh;
+  width: auto;
+  height: auto;
+}

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🆚 优化后的VSCode风格主题展示</title>
+    <link rel="stylesheet" href="styles-complete.css">
+    <style>
+        body { 
+            background: var(--bg);
+            margin: 0;
+            padding: 20px;
+            font-family: var(--font-sans);
+            color: var(--text);
+        }
+        .demo-container { 
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .demo-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: var(--panel);
+            border-radius: var(--card-radius);
+            border: 1px solid var(--border);
+        }
+        .demo-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        .demo-item {
+            background: var(--panel);
+            border-radius: var(--card-radius);
+            padding: 20px;
+            border: 1px solid var(--border);
+        }
+        .demo-item h3 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+        .feature-list li {
+            margin: 8px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+        .feature-list li::before {
+            content: "✨";
+            position: absolute;
+            left: 0;
+        }
+        @media (max-width: 768px) {
+            .demo-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <div class="demo-header">
+            <h1>🆚 优化后的VSCode风格主题</h1>
+            <p>完整复刻Visual Studio Code的深色主题界面，包含真实的编辑器元素和交互细节</p>
+        </div>
+
+        <!-- VSCode模板展示 -->
+        <div id="vscode-demo" class="template-terminal">
+            <div class="content-wrap">
+                <div class="content-text">// 优化后的VSCode风格主题演示
+
+# VSCode主题特性展示
+
+这是一个完全模拟VSCode界面的主题模板，包含：
+
+## 界面元素
+- 完整的标题栏和窗口控制按钮
+- 左侧行号显示区域  
+- 真实的VSCode状态栏
+- 正确的字体渲染和间距
+
+## 视觉效果
+- 精确的VSCode Dark+配色方案
+- 微妙的网格背景纹理
+- 专业的滚动条样式
+- 语法高亮色彩模拟
+
+## 技术细节
+- 支持响应式布局
+- 优化的字体堆栈
+- 完整的选中状态样式
+- 硬件加速的渲染优化
+
+## 用户体验
+- 悬停时的动态效果
+- 真实的编辑器体验
+- 专业的开发者界面感
+- 完美的细节还原
+
+让你的文档看起来就像在VSCode中编写一样专业！</div>
+            </div>
+            <div class="brand-footer">
+                <div class="brand-left">
+                    <span class="brand-name">@developer</span>
+                </div>
+                <div class="brand-right">
+                    <span class="brand-mark">Professional • Code • Share</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="demo-grid">
+            <div class="demo-item">
+                <h3>🎨 设计特色</h3>
+                <ul class="feature-list">
+                    <li>完整的VSCode标题栏和窗口控制</li>
+                    <li>真实的行号显示区域</li>
+                    <li>专业的状态栏信息展示</li>
+                    <li>精确的VSCode Dark+配色</li>
+                    <li>微妙的网格背景纹理</li>
+                    <li>语法高亮色彩模拟</li>
+                </ul>
+            </div>
+
+            <div class="demo-item">
+                <h3>⚡ 技术优化</h3>
+                <ul class="feature-list">
+                    <li>响应式布局适配各种屏幕</li>
+                    <li>优化的字体渲染技术</li>
+                    <li>硬件加速的图形性能</li>
+                    <li>专业的滚动条样式</li>
+                    <li>完整的选中状态效果</li>
+                    <li>悬停交互动画</li>
+                </ul>
+            </div>
+        </div>
+
+        <div style="margin-top: 30px; padding: 20px; background: var(--subtle); border-radius: var(--card-radius); text-align: center;">
+            <h3>🚀 现在就体验新的VSCode风格主题！</h3>
+            <p>在模板选择器中选择"VSCode风格"即可应用这个专业的开发者界面主题。</p>
+        </div>
+    </div>
+
+    <script>
+        // 添加一些交互效果
+        document.addEventListener('DOMContentLoaded', function() {
+            const vscodeDemo = document.getElementById('vscode-demo');
+            
+            // 鼠标悬停效果
+            vscodeDemo.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.01)';
+                this.style.transition = 'transform 0.3s ease';
+            });
+            
+            vscodeDemo.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+            });
+            
+            // 点击复制功能演示
+            vscodeDemo.addEventListener('click', function() {
+                const tempInput = document.createElement('textarea');
+                tempInput.value = this.querySelector('.content-text').textContent;
+                document.body.appendChild(tempInput);
+                tempInput.select();
+                document.execCommand('copy');
+                document.body.removeChild(tempInput);
+                
+                // 显示复制成功提示
+                const tooltip = document.createElement('div');
+                tooltip.textContent = '✅ 内容已复制到剪贴板';
+                tooltip.style.cssText = `
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    background: var(--success);
+                    color: white;
+                    padding: 12px 20px;
+                    border-radius: 8px;
+                    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                    z-index: 10000;
+                    animation: slideIn 0.3s ease-out;
+                `;
+                
+                document.body.appendChild(tooltip);
+                setTimeout(() => {
+                    document.body.removeChild(tooltip);
+                }, 2000);
+            });
+        });
+        
+        // 添加CSS动画
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

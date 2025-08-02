@@ -1,0 +1,33 @@
+/**
+ * 主样式文件 - 模块化架构
+ * 
+ * 架构说明：
+ * - core.css: 核心变量、重置样式、基础工具类
+ * - layout.css: 布局系统、响应式设计
+ * - forms.css: 表单控件、输入组件
+ * - buttons.css: 按钮组件
+ * - components.css: 功能组件（预览、导出、历史等）
+ * - notifications.css: 通知和状态样式
+ * - templates.css: 所有图片生成模板
+ */
+
+/* 核心系统 */
+@import url('./styles/core.css');
+
+/* 布局系统 */
+@import url('./styles/layout.css');
+
+/* 表单控件 */
+@import url('./styles/forms.css');
+
+/* 按钮组件 */
+@import url('./styles/buttons.css');
+
+/* 功能组件 */
+@import url('./styles/components.css');
+
+/* 通知系统 */
+@import url('./styles/notifications.css');
+
+/* 模板样式 */
+@import url('./styles/templates.css');

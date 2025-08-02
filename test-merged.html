@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模板切换测试 - 合并CSS版本</title>
+    <link rel="stylesheet" href="styles-merged.css">
+    <style>
+        body { margin: 20px; }
+        .test-controls { 
+            margin-bottom: 20px; 
+            padding: 20px;
+            background: var(--panel);
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+        .test-controls select, .test-controls button {
+            margin: 5px;
+            padding: 10px;
+        }
+        #test-area { 
+            min-height: 300px;
+            max-width: 600px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎨 模板切换功能测试</h1>
+    
+    <div class="test-controls">
+        <label for="template-select">选择模板:</label>
+        <select id="template-select">
+            <option value="template-default">默认模板</option>
+            <option value="template-code">代码风格</option>
+            <option value="template-letter">信纸风格</option>
+            <option value="template-neon">霓虹渐变</option>
+            <option value="template-glass">玻璃拟态</option>
+            <option value="template-terminal">终端风格</option>
+            <option value="template-magazine">杂志风格</option>
+            <option value="template-sticky">便签风格</option>
+        </select>
+        <button onclick="changeTemplate()">应用模板</button>
+        <button onclick="showClasses()">显示当前类</button>
+    </div>
+    
+    <div id="test-area" class="template-default">
+        <div class="content-wrap">
+            <div class="content-text">
+这是测试内容，用于验证模板切换功能。
+
+如果模板切换正常工作，你应该能看到：
+- 背景颜色和样式的变化
+- 字体和布局的调整
+- 不同的视觉效果
+
+请尝试切换不同的模板选项。
+            </div>
+        </div>
+        <div class="brand-footer">
+            <div class="brand-left">
+                <span class="brand-name">@test_user</span>
+            </div>
+            <div class="brand-right">
+                <span class="brand-mark">Test • Template • Switch</span>
+            </div>
+        </div>
+    </div>
+    
+    <div style="margin-top: 20px; padding: 15px; background: var(--subtle); border-radius: 6px;">
+        <strong>当前应用的CSS类：</strong>
+        <code id="current-classes">template-default</code>
+    </div>
+    
+    <script>
+        function changeTemplate() {
+            const select = document.getElementById('template-select');
+            const testArea = document.getElementById('test-area');
+            const selectedTemplate = select.value;
+            
+            console.log('Changing template to:', selectedTemplate);
+            
+            // 移除所有模板类
+            const currentClasses = testArea.className.split(' ');
+            const filteredClasses = currentClasses.filter(cls => !cls.startsWith('template-'));
+            
+            // 设置新的类名
+            testArea.className = filteredClasses.join(' ');
+            
+            // 添加新模板类
+            if (selectedTemplate) {
+                testArea.classList.add(selectedTemplate);
+            }
+            
+            // 更新显示
+            document.getElementById('current-classes').textContent = testArea.className;
+            
+            console.log('Applied template:', selectedTemplate);
+            console.log('Current classes:', testArea.className);
+            
+            // 强制重排
+            testArea.offsetHeight;
+        }
+        
+        function showClasses() {
+            const testArea = document.getElementById('test-area');
+            alert('当前CSS类: ' + testArea.className);
+        }
+        
+        // 初始化显示
+        document.addEventListener('DOMContentLoaded', function() {
+            const testArea = document.getElementById('test-area');
+            document.getElementById('current-classes').textContent = testArea.className;
+        });
+    </script>
+</body>
+</html>

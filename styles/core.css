@@ -1,0 +1,139 @@
+/**
+ * CSS 核心变量和基础样式
+ */
+
+:root {
+  /* 色彩系统 - GitHub 风格 */
+  --bg: #f6f8fa;
+  --panel: #ffffff;
+  --subtle: #f6f8fa;
+  --border: #d0d7de;
+  --muted: #57606a;
+  --text: #1f2328;
+  --primary: #0969da;
+  --success: #1a7f37;
+  --warning: #bf8700;
+  --danger: #d1242f;
+  --ring: 0 0 0 3px rgba(9, 105, 218, .25);
+
+  /* 尺寸系统 */
+  --card-radius: 12px;
+  --preview-width: 960px;
+  --preview-padding: 32px;
+  --sidebar-width: 380px;
+  
+  /* 阴影系统 */
+  --shadow-sm: 0 1px 2px rgba(31, 35, 40, .04);
+  --shadow-md: 0 3px 6px rgba(140, 149, 159, .15);
+  --shadow-lg: 0 8px 24px rgba(140,149,159,.2);
+  --shadow-xl: 0 16px 32px rgba(31, 35, 40, .15);
+  
+  /* 动效系统 */
+  --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* 字体系统 */
+  --font-sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Inter, Roboto, Noto Sans SC, Arial, sans-serif;
+  --font-mono: 'Fira Code', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+  --font-serif: Lora, Georgia, 'Times New Roman', Times, serif;
+}
+
+/* 暗色主题 */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0d1117;
+    --panel: #161b22;
+    --subtle: #21262d;
+    --border: #30363d;
+    --muted: #7d8590;
+    --text: #e6edf3;
+    --primary: #58a6ff;
+    --success: #3fb950;
+    --warning: #d29922;
+    --danger: #f85149;
+  }
+}
+
+/* 基础重置 */
+* { 
+  box-sizing: border-box;
+  transform: translateZ(0); /* GPU 加速 */
+  backface-visibility: hidden;
+}
+
+html, body { 
+  height: 100%;
+  -webkit-text-size-adjust: 100%;
+  overscroll-behavior: none;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  contain: layout style paint;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* 基础布局系统 */
+.container {
+  display: grid;
+  grid-template-columns: var(--sidebar-width) 1fr;
+  gap: 24px;
+  padding: 24px;
+  align-items: start;
+  min-height: 100vh;
+  will-change: transform;
+}
+
+/* 实用工具类 */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.loading {
+  opacity: 0.6;
+  pointer-events: none;
+  transition: var(--transition);
+  position: relative;
+}
+
+.generating {
+  cursor: progress;
+}
+
+.generating * {
+  pointer-events: none;
+}
+
+/* 滚动条优化 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--subtle);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted);
+}

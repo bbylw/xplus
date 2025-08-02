@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>模板切换测试</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .test-area {
+            width: 400px;
+            height: 200px;
+            border: 2px solid #ccc;
+            padding: 20px;
+            margin: 20px;
+        }
+        
+        button {
+            margin: 5px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>模板切换测试</h1>
+    
+    <div>
+        <label for="template-select">选择模板:</label>
+        <select id="template-select">
+            <option value="template-default">默认</option>
+            <option value="template-code">代码风</option>
+            <option value="template-letter">信纸风</option>
+            <option value="template-neon">霓虹渐变</option>
+            <option value="template-glass">玻璃拟态</option>
+        </select>
+        <button onclick="changeTemplate()">应用模板</button>
+    </div>
+    
+    <div id="test-area" class="test-area template-default">
+        <div class="content-wrap">
+            <div class="content-text">
+                这是测试内容，用于验证模板切换是否正常工作。
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function changeTemplate() {
+            const select = document.getElementById('template-select');
+            const testArea = document.getElementById('test-area');
+            const selectedTemplate = select.value;
+            
+            // 移除所有模板类
+            const currentClasses = testArea.className.split(' ');
+            const filteredClasses = currentClasses.filter(cls => !cls.startsWith('template-'));
+            
+            // 设置新的类名
+            testArea.className = filteredClasses.join(' ');
+            
+            // 添加新模板类
+            if (selectedTemplate) {
+                testArea.classList.add(selectedTemplate);
+            }
+            
+            console.log('Applied template:', selectedTemplate);
+            console.log('Current classes:', testArea.className);
+        }
+    </script>
+</body>
+</html>

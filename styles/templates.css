@@ -1,0 +1,568 @@
+/**
+ * 模板样式 - 所有图片生成模板
+ */
+
+/* 默认模板 */
+.template-default {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  color: #1a202c;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.template-default .content-wrap {
+  padding: calc(var(--preview-padding) + 8px) var(--preview-padding);
+  position: relative;
+}
+
+.template-default .content-wrap::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: var(--preview-padding);
+  right: var(--preview-padding);
+  height: 2px;
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 50%, #667eea 100%);
+  border-radius: 1px;
+}
+
+.template-default .content-text {
+  max-width: 68ch;
+  margin: 0 auto;
+  line-height: 1.8;
+  font-weight: 400;
+  color: #2d3748;
+  text-rendering: optimizeLegibility;
+}
+
+.template-default .content-text::first-line {
+  font-weight: 600;
+  font-size: 1.05em;
+  letter-spacing: 0.01em;
+}
+
+/* 代码风格模板 */
+.template-code {
+  background: radial-gradient(ellipse at top left, #1a1f36 0%, #0d1117 60%),
+              linear-gradient(135deg, #0d1117 0%, #161b22 100%);
+  color: #f0f6fc;
+  border: 1px solid #30363d;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.template-code::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 50%, rgba(56, 189, 248, 0.08) 0%, transparent 50%),
+              radial-gradient(circle at 80% 20%, rgba(236, 72, 153, 0.06) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.template-code .content-wrap {
+  background: rgba(22, 27, 34, 0.8);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(48, 54, 61, 0.8);
+  border-radius: 12px;
+  position: relative;
+  z-index: 2;
+  padding-left: calc(var(--preview-padding) + 40px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.template-code .content-text {
+  font-family: var(--font-mono);
+  line-height: 1.8;
+  font-size: 16px;
+  font-weight: 500;
+  color: #e6edf3;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  letter-spacing: 0.02em;
+}
+
+/* 信纸风格模板 */
+.template-letter {
+  background: linear-gradient(135deg, #fefcf3 0%, #faf6ef 100%);
+  color: #2d2d2d;
+  position: relative;
+  border: 1px solid #e8e0d3;
+  box-shadow: 0 4px 12px rgba(139, 121, 94, 0.1), 0 1px 3px rgba(139, 121, 94, 0.05);
+}
+
+.template-letter::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(0deg, transparent 0px, transparent 28px, 
+              rgba(139, 121, 94, 0.08) 28px, rgba(139, 121, 94, 0.08) 30px);
+  pointer-events: none;
+}
+
+.template-letter .content-text {
+  font-family: var(--font-serif);
+  line-height: 1.9;
+  font-size: 20px;
+  font-weight: 400;
+  color: #2d2d2d;
+  text-indent: 2em;
+  text-rendering: optimizeLegibility;
+}
+
+/* 霓虹渐变模板 */
+.template-neon {
+  background: radial-gradient(ellipse 800px 600px at 0% 0%, rgba(94,234,212,0.25) 0%, rgba(94,234,212,0) 50%),
+              radial-gradient(ellipse 700px 500px at 100% 100%, rgba(167,139,250,0.2) 0%, rgba(167,139,250,0) 50%),
+              linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #111827 100%);
+  color: #f1f5f9;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(148, 163, 184, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 80px rgba(94, 234, 212, 0.05);
+}
+
+.template-neon::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 20%, rgba(94, 234, 212, 0.08) 0%, transparent 50%),
+              radial-gradient(circle at 70% 80%, rgba(167, 139, 250, 0.06) 0%, transparent 50%);
+  pointer-events: none;
+  animation: neonPulse 8s ease-in-out infinite;
+}
+
+@keyframes neonPulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+.template-neon .content-text {
+  color: #f1f5f9;
+  text-shadow: 0 0 20px rgba(94, 234, 212, 0.3), 0 1px 3px rgba(0, 0, 0, 0.5);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+/* 杂志报头模板 */
+.template-magazine {
+  background: linear-gradient(135deg, #fefefe 0%, #f8f9fa 100%);
+  color: #212529;
+  border: 1px solid #dee2e6;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04);
+  position: relative;
+}
+
+.template-magazine::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #dc2626 0%, #ea580c 25%, #d97706 50%, #ca8a04 75%, #dc2626 100%);
+}
+
+.template-magazine .content-wrap::before {
+  content: "FEATURED STORY";
+  position: absolute;
+  top: 12px;
+  left: 20px;
+  height: 28px;
+  line-height: 28px;
+  padding: 0 16px;
+  background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+  color: #ffffff;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  font-size: 11px;
+  border-radius: 8px;
+  z-index: 3;
+}
+
+/* 玻璃拟态模板 */
+.template-glass {
+  background: radial-gradient(800px 600px at 15% 20%, rgba(139, 92, 246, 0.3) 0%, transparent 50%),
+              radial-gradient(600px 400px at 85% 80%, rgba(236, 72, 153, 0.25) 0%, transparent 50%),
+              linear-gradient(135deg, #1e293b 0%, #334155 50%, #475569 100%);
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+
+.template-glass .content-wrap {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.template-glass .content-text {
+  color: #ffffff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5), 0 2px 8px rgba(0, 0, 0, 0.3);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+/* 终端风格模板 */
+/* 终端风格：完整的VSCode深色主题风格 */
+.template-terminal {
+  background: #1e1e1e;
+  color: #cccccc;
+  font-family: 'Cascadia Code', 'Fira Code', var(--font-mono);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #3c3c3c;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+/* VSCode标题栏 */
+.template-terminal::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 35px;
+  background: linear-gradient(180deg, #2d2d30 0%, #252526 100%);
+  border-bottom: 1px solid #3c3c3c;
+  z-index: 1;
+  box-shadow: inset 0 -1px 0 rgba(0,0,0,0.2);
+}
+
+/* 窗口控制按钮 */
+.template-terminal::after {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 12px;
+  width: 12px;
+  height: 12px;
+  background: #ff5f56;
+  border-radius: 50%;
+  box-shadow: 
+    20px 0 0 #ffbd2e,
+    40px 0 0 #27ca3f;
+  z-index: 2;
+}
+
+/* 编辑器区域 */
+.template-terminal .content-wrap {
+  padding-top: calc(var(--preview-padding) + 35px);
+  padding-left: calc(var(--preview-padding) + 58px);
+  padding-right: var(--preview-padding);
+  padding-bottom: calc(var(--preview-padding) + 25px);
+  position: relative;
+  z-index: 3;
+  background: #1e1e1e;
+  min-height: 400px;
+}
+
+/* 标题栏文字 */
+.template-terminal .content-wrap::before {
+  content: "● document.md — Visual Studio Code";
+  position: absolute;
+  top: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #cccccc;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 35px;
+  z-index: 2;
+  opacity: 0.9;
+}
+
+/* 左侧行号区域 */
+.template-terminal .content-wrap::after {
+  content: "1\A2\A3\A4\A5\A6\A7\A8\A9\A10\A11\A12\A13\A14\A15";
+  position: absolute;
+  left: 0;
+  top: var(--preview-padding);
+  width: 50px;
+  padding: 0 12px 0 16px;
+  background: rgba(30, 30, 30, 0.8);
+  border-right: 1px solid #3c3c3c;
+  color: #858585;
+  font-family: 'Cascadia Code', 'Fira Code', var(--font-mono);
+  font-size: 13px;
+  line-height: 1.6;
+  text-align: right;
+  white-space: pre;
+  z-index: 1;
+  user-select: none;
+  box-shadow: inset -1px 0 0 rgba(255,255,255,0.04);
+}
+
+.template-terminal .content-text {
+  font-family: 'Cascadia Code', 'Fira Code', 'SF Mono', Monaco, 'Inconsolata', 'Fira Mono', 'Droid Sans Mono', 'Source Code Pro', monospace;
+  line-height: 1.6;
+  font-size: 14px;
+  font-weight: 400;
+  color: #d4d4d4;
+  letter-spacing: 0.02em;
+  position: relative;
+  z-index: 3;
+  white-space: pre-wrap;
+  margin-left: -50px;
+  padding-left: 12px;
+  border-left: 1px solid transparent;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* VSCode 语法高亮样式模拟 */
+.template-terminal .content-text::first-line {
+  color: #569cd6; /* 蓝色 - 关键字 */
+  font-weight: 500;
+}
+
+/* 品牌页脚 - VSCode状态栏风格 */
+.template-terminal .brand-footer {
+  background: #007acc;
+  border-top: none;
+  position: relative;
+  z-index: 3;
+  padding: 4px 16px;
+  font-size: 12px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* 状态栏左侧 */
+.template-terminal .brand-footer::before {
+  content: "●";
+  color: white;
+  font-family: var(--font-mono);
+  font-weight: 400;
+  margin-right: 8px;
+  font-size: 8px;
+  vertical-align: middle;
+}
+
+.template-terminal .brand-footer .brand-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: white;
+  font-size: 11px;
+}
+
+.template-terminal .brand-name { 
+  color: white;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-weight: 400;
+  font-size: 11px;
+}
+
+.template-terminal .brand-right .brand-mark { 
+  color: rgba(255, 255, 255, 0.8);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+}
+
+/* 状态栏右侧信息 */
+.template-terminal .brand-footer::after {
+  content: "Ln 1, Col 1  •  Spaces: 2  •  UTF-8  •  Markdown";
+  color: rgba(255, 255, 255, 0.8);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+}
+
+/* VSCode 滚动条样式 */
+.template-terminal .content-wrap::-webkit-scrollbar {
+  width: 14px;
+}
+
+.template-terminal .content-wrap::-webkit-scrollbar-track {
+  background: #1e1e1e;
+}
+
+.template-terminal .content-wrap::-webkit-scrollbar-thumb {
+  background: #424242;
+  border-radius: 7px;
+  border: 2px solid #1e1e1e;
+}
+
+.template-terminal .content-wrap::-webkit-scrollbar-thumb:hover {
+  background: #4e4e4e;
+}
+
+/* 选中文本样式 */
+.template-terminal .content-text::selection {
+  background: rgba(55, 148, 255, 0.3);
+  color: inherit;
+}
+
+/* 微妙的网格线背景 */
+.template-terminal {
+  background-image: 
+    linear-gradient(rgba(255,255,255,0.01) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.01) 1px, transparent 1px);
+  background-size: 20px 20px;
+  background-position: 0 35px;
+}
+
+/* 焦点状态 */
+.template-terminal:hover {
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* 响应式优化 */
+@media (max-width: 768px) {
+  .template-terminal .content-text {
+    margin-left: -35px;
+    padding-left: 8px;
+  }
+  
+  .template-terminal .content-wrap::after {
+    width: 35px;
+    padding: 0 8px 0 12px;
+    font-size: 12px;
+  }
+  
+  .template-terminal .content-wrap {
+    padding-left: calc(var(--preview-padding) + 43px);
+  }
+}
+
+/* 其他简化模板 */
+.template-sticky {
+  background: linear-gradient(135deg, #fffef7 0%, #fffaf0 100%);
+  color: #44403c;
+  border: 1px solid #f59e0b;
+  transform: rotate(-0.5deg);
+}
+
+.template-retro {
+  background: linear-gradient(135deg, #f4e4bc 0%, #e8d5b7 100%);
+  color: #5d4037;
+  font-family: var(--font-serif);
+  border: 3px solid #8d6e63;
+}
+
+.template-nature {
+  background: linear-gradient(135deg, #e8f5e8 0%, #f1f8e9 100%);
+  color: #2e7d32;
+  font-family: var(--font-serif);
+  border: 2px solid #4caf50;
+  border-radius: 20px;
+}
+
+.template-business {
+  background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
+  color: #263238;
+  border: 1px solid #cfd8dc;
+  position: relative;
+}
+
+.template-business::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(to bottom, #1976d2, #1565c0);
+}
+
+.template-social {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 20px;
+}
+
+.template-modern {
+  background: white;
+  color: #1a202c;
+  border-radius: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.template-modern::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #667eea, #764ba2, #f093fb, #f5576c);
+}
+
+/* 创意和赛博朋克模板有特殊动画 */
+.template-creative {
+  background: conic-gradient(from 45deg at 50% 50%, #ff6b6b22 0deg, #4ecdc422 72deg, 
+              #45b7d122 144deg, #96ceb422 216deg, #ffeaa722 288deg, #ff6b6b22 360deg),
+              linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  color: #2c3e50;
+  border-radius: 25px;
+  position: relative;
+  overflow: hidden;
+}
+
+.template-creative::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: conic-gradient(from 45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #ffeaa7, #ff6b6b);
+  border-radius: 25px;
+  z-index: -1;
+  animation: creative-rotate 6s linear infinite;
+}
+
+@keyframes creative-rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.template-cyberpunk {
+  background: linear-gradient(45deg, #0a0a0a 0%, #1a0033 50%, #000000 100%);
+  color: #00ffff;
+  font-family: var(--font-mono);
+  border: 2px solid #ff00ff;
+  box-shadow: 0 0 20px #ff00ff44, inset 0 0 20px #00ffff22;
+  position: relative;
+  overflow: hidden;
+}
+
+.template-cyberpunk::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, #00ffff44, transparent);
+  animation: cyberpunk-scan 3s infinite;
+}
+
+@keyframes cyberpunk-scan {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* 模板切换动画 */
+@media (prefers-reduced-motion: no-preference) {
+  #capture-area {
+    transition: var(--transition-slow);
+  }
+  
+  .content-text {
+    transition: all 0.3s ease-out;
+  }
+}
